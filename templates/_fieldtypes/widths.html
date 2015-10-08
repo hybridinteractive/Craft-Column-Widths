@@ -1,0 +1,9 @@
+{% import "_includes/forms/" as forms %}
+​
+{{ forms.selectField({
+    instructions: "Select the width of your column"|t,
+    id: 'columnWidth',
+    name: 'columnWidth',
+    options: options,
+    value: values
+}) }}

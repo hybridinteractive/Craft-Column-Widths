@@ -1,0 +1,49 @@
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+{% set centered = true %}
+
+{% if widthsId is not defined %}{% set widthsId = null %}{% endif %}
+{% if widths is not defined %}
+    {% if widthsId %}
+        {% set widths = craft.columnwidth.getWidthsById(widthsId) %}
+        {% if not widths %}{% exit 404 %}{% endif %}
+    {% else %}
+        {% set widths = null %}
+    {% endif %}
+{% endif %}
+
+{% set title = widths ? widths.name : "New Width"|t %}
+
+{% set crumbs = [
+    { label: "Column Widths"|t, url: url('columnwidth') }
+] %}
+
+{% set content %}
+
+    <form method="post" action="" accept-charset="UTF-8">
+        <input type="hidden" name="action" value="columnWidth/widths/saveWidths" />
+        <input type="hidden" name="redirect" value="columnwidth/widths/{widthsId}" />
+        <input type="hidden" name="widthsId" value="{{ widthsId }}" />
+
+        {{ forms.textField({
+            label: 'Width Name'|t,
+            required: true,
+            name: 'widths[name]',
+            value: widths ? widths.name : null,
+            errors: widths ? widths.errors('name') : null,
+        }) }}
+
+        {{ forms.textField({
+            label: 'Width Class Name'|t,
+            required: true,
+            name: 'widths[className]',
+            value: widths ? widths.className : null,
+            errors: widths ? widths.errors('className') : null,
+        }) }}
+
+        <div class="buttons">
+            <input type="submit" class="btn submit" value="{{ 'Save'|t }}">
+        </div>
+    </form>
+
+{% endset %}

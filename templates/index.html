@@ -1,0 +1,53 @@
+{% extends "_layouts/cp" %}
+{% set centered = true %}
+
+{% set widths = craft.columnwidth.getAllWidths %}
+{% set title = "Column Widths"|t %}
+
+{% set content %}
+
+    {{ "Set your widths below:"|t }}
+
+    {{ "Note: Class Name will be used in your templates"|t }}
+
+    <p id="nowidths"{% if widths|length %} class="hidden"{% endif %}>
+        {{ "No widths exist yet."|t }}
+    </p>
+
+    {% if widths|length %}
+        <table id="widths" class="data">
+            <thead>
+                <th scope="col">{{ "Name"|t }}</th>
+                <th class="thin"></th>
+                <th scope="col">{{ "Class Name"|t }}</th>
+                <th class="thin"></th>
+            </thead>
+            <tbody>
+
+                {% for widths in widths %}
+                    <tr data-id="{{ widths.id }}" data-name="{{ widths.name|t }}">
+                        <td><a href="{{ url('columnwidth/widths/'~widths.id) }}">{{ widths.name }}</a></td>
+                        <td class="tdin"></th>
+                        <td><a href="{{ url('columnwidth/widths/'~widths.id) }}">{{ widths.className }}</a></td>
+                        <td><a class="delete icon" title="{{ 'Delete'|t }}"></a></td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+
+    <div class="buttons">
+        <a href="{{ url('columnwidth/widths/new') }}" class="btn add icon">{{ "New Width"|t }}</a>
+    </div>
+
+{% endset %}
+
+{% set js %}
+    new Craft.AdminTable({
+        tableSelector: '#widths',
+        noObjectsSelector: '#nowidths',
+        deleteAction: 'columnWidth/widths/deleteWidths'
+    });
+{% endset %}
+{% includeJs js %}
