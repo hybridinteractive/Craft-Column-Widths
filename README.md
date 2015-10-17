@@ -33,4 +33,4 @@ I definitely could not have done this without [Aaron Berkowitz](https://twitter.
 
 ## License
 
-This work is licenced under the MIT license.
+This work is licensed under the MIT license.
