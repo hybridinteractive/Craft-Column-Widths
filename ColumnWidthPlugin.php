@@ -16,8 +16,6 @@ class ColumnWidthPlugin extends BasePlugin
 
     public function getDeveloper()
     {
-    	// Taken to version 2.0 by Sean Delaney | DelaneyMethod
-    	
         return 'Mark Busnelli Jr.';
     }
 
