@@ -11,7 +11,7 @@ class ColumnWidthPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0';
+        return '1.0.1';
     }
 
     public function getDeveloper()
@@ -21,7 +21,7 @@ class ColumnWidthPlugin extends BasePlugin
 
     public function getDeveloperUrl()
     {
-        return 'http://www.unleadedgroup.com';
+        return 'http://www.encryptdesigns.com';
     }
     
     public function hasCpSection()
@@ -38,6 +38,16 @@ class ColumnWidthPlugin extends BasePlugin
             'columnwidth\/widths\/new' => 'columnwidth/widths/_edit',
             'columnwidth\/widths\/(?P<widthsId>\d+)' => 'columnwidth/widths/_edit',
         );
+    }
+
+    /**
+     * Get the plugin's Settings route
+     *
+     * @return mixed
+     */
+    public function getSettingsUrl()
+    {
+        return 'columnwidth';
     }
 
     /**
