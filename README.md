@@ -38,5 +38,6 @@ This work is licensed under the MIT license.
 ## Changelog
 
 ### 1.0.1 -- 2016.01.13
+### 1.0.2 -- 2016.03.17 - Updated `fieldtypes` casing
 
 * [Added] Menu Icons
